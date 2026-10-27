@@ -41,7 +41,7 @@ class ContextMenu {
 	 * @param checked Should the context menu display checks to the left of each action.
 	 * @param target The target that the context menu was triggered on.
 	 * @param event The mouse event that triggered the context menu.
-	 * @param frameElem The HTML Element that the context menu should be rendered within (and be positioned relative to it's content).
+	 * @param frameElem The HTML Element that the context menu should be positioned within (i.e. relative to it's content).
 	 * @param onClose An optional callback to be invoked when the context menu is closed.
 	 * @param className An optional class name to add to the context menu.
 	 */
@@ -70,7 +70,9 @@ class ContextMenu {
 		menu.className = 'contextMenu' + (checked ? ' checked' : '') + (className !== null ? ' ' + className : '');
 		menu.style.opacity = '0';
 		menu.innerHTML = html;
-		frameElem.appendChild(menu);
+		// Append the context menu to the document body so that it renders above the Commit Details View when it is docked to the bottom of the window
+		// (the docked Commit Details View is a later sibling of the view element in the document body, and would otherwise cover the context menu)
+		document.body.appendChild(menu);
 		const menuBounds = menu.getBoundingClientRect(), frameBounds = frameElem.getBoundingClientRect();
 		const relativeX = event.pageX + menuBounds.width < frameBounds.right
 			? -2 // context menu fits to the right
