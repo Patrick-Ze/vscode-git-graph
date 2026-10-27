@@ -41,7 +41,7 @@ class ContextMenu {
 	 * @param checked Should the context menu display checks to the left of each action.
 	 * @param target The target that the context menu was triggered on.
 	 * @param event The mouse event that triggered the context menu.
-	 * @param frameElem The HTML Element that the context menu should be positioned within (i.e. relative to it's content).
+	 * @param frameElem The HTML Element that the context menu should be positioned within (relative to it's content).
 	 * @param onClose An optional callback to be invoked when the context menu is closed.
 	 * @param className An optional class name to add to the context menu.
 	 */
